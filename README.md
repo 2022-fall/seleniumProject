@@ -253,12 +253,14 @@ from selenium.webdriver.common.by import By
 
 driver = webdriver.Chrome()
 driver.get("myapp.com")
+# all of below methods return single element, 
+# return first element if multiple elements found in html document by given locator
 driver.find_element(By.ID, 'search')
 driver.find_element(By.NAME, 'q')
-driver.find_element(By.CLASS_NAME, 'input-text')
-driver.find_element(By.TAG_NAME, 'input')
 driver.find_element(By.XPATH, '//form[0]/div[0]/input[0]')
 driver.find_element(By.CSS_SELECTOR, '#search')
+driver.find_element(By.CLASS_NAME, 'input-text')
+driver.find_element(By.TAG_NAME, 'input')
 driver.find_element(By.LINK_TEXT, 'Log In')
 driver.find_element(By.PARTIAL_LINK_TEXT, 'Log')
 ```
@@ -270,6 +272,7 @@ from selenium.webdriver.common.by import By
 
 driver = webdriver.Chrome()
 driver.get("myapp.com")
+# all of below methods return list of elements , [prod1, prod2, ..]
 driver.find_elements(By.ID, 'products')
 driver.find_elements(By.NAME, 'products')
 driver.find_elements(By.CLASS_NAME, 'input-text')
