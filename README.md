@@ -539,17 +539,7 @@ Videos to watch:
 1. [HTTP messages used in API calls](https://www.w3schools.com/tags/ref_httpmessages.asp)
 2. [HTML document and tags](https://www.w3schools.com/tags/tag_span.asp)
 3. [Learning Selenium Testing Tools with Python (book)](data/Learning_Selenium.pdf)
-4. [What is xpath and how to build them.](https://www.guru99.com/xpath-selenium.html)
-5. [Socratica playlist in youtube](https://youtu.be/bY6m6_IIN94)
-
-
-
-
-
-
-
-
-
-
-
+4. [The Ultimate Selenium Python Cheat Sheet for Test Automation](https://www.lambdatest.com/blog/selenium-python-cheat-sheet/)
+5. [What is xpath and how to build them.](https://www.guru99.com/xpath-selenium.html)
+6. [Socratica playlist in youtube](https://youtu.be/bY6m6_IIN94)
 
