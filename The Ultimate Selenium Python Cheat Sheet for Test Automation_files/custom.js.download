@@ -1,0 +1,80 @@
+
+$(function(){
+    // Sticky Header
+    $(window).scroll(function(){
+        if($(window).scrollTop()>10){
+            $('header').not('.sticked').addClass('sticky');
+        }else{
+            $('header').not('.sticked').removeClass('sticky');
+        }
+    });
+
+    //On load if scroll in middle on page
+    if($(window).scrollTop()>0){
+        $('header').not('.sticked').addClass('sticky');
+    }else{
+        $('header').not('.sticked').removeClass('sticky');
+    }
+    if($(window).width()<768){
+        $('header').addClass('mob-sticked');
+    }
+    $(window).resize(function(){
+        if($(window).width()<768){
+            $('header').addClass('mob-sticked');
+        }else{
+            $('header').removeClass('mob-sticked');
+        }
+    });
+    
+    $(".menu-toggle").click(function(){
+       $("#primary-menu").toggle();
+	});
+
+    //Feature tab on click
+    // $('.feature-bar .home-feature a').on('click',function(e){
+    //     e.preventDefault();
+    //     scrollOffset = $(this.hash).offset().top;
+    //     setoffset = scrollOffset - 70;
+    //     $('html,body').animate({scrollTop:setoffset},1000);
+    // });
+    // Benifits screens
+    $('.benifits-screens a').hover(function(e) {
+        currIdx = $(this).attr('data-id');
+        $('.benifits-screens img').css('display','none');
+        $('.benifits-screens img:eq('+ currIdx +')').css('display','block');
+        $('.benifits-screens a').removeClass('active');
+        $(this).addClass('active');
+    });
+
+    $('.faq-accordian a').click(function(e){
+        e.preventDefault();
+        elm = $(this).parent();
+        if(!$(elm).hasClass('active')){
+            $('.faq-accordian li').removeClass('active');
+            elm.addClass('active');
+            $('.faq-accordian .acc-content').slideUp();
+            $(this).next().slideDown();
+        }else{
+            elm.removeClass('active');
+            $(this).next().slideUp();
+        }
+        
+    })
+
+});
+$(window).scroll(function () {
+    var scroll = $(window).scrollTop();
+    var scrollBottom = $(window).scrollTop() > (document.body.scrollHeight - 1000);
+
+
+    if (scroll>=210) {
+        if (!scrollBottom) {
+            $(".divsect").addClass("menulist");
+        } else {
+            $(".divsect").removeClass("menulist");
+        }
+    }else{
+        $(".divsect").removeClass("menulist");
+	} 
+   
+});

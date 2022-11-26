@@ -1,0 +1,23 @@
+
+	
+	var commentBox = $('.comment-box').height();
+//console.log('Height', commentBox)	
+$(window).scroll(function () {
+    var scroll = $(window).scrollTop();
+    var scrollBottom = $(window).scrollTop() > (document.body.scrollHeight - window.innerHeight - (commentBox + 1050));
+
+    if (scroll>=210) {
+        if (!scrollBottom) {
+        $(".divsect").addClass("menulist");
+    //} //else if (scrollBottom >= 3010) {
+       // $(".divsect").removeClass("menulist");
+    } else {
+        $(".divsect").removeClass("menulist");
+
+    }
+    } else {
+        $(".divsect").removeClass("menulist");
+
+    }
+   
+});
