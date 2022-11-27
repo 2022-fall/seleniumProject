@@ -53,6 +53,7 @@ try:
     driver.find_element(By.ID, "windowButton").click()
     # now we have 2 tabs, get window handles (list), tabs are in order handles=[idoffirsttab, idofsecondtab]
     handles = driver.window_handles
+    print("number of handles found:", len(handles))
     print("IDs of all tabs/windows open:", handles)
     print("current browser window ID:", driver.current_window_handle)
     # switch to the second tab, switch to handles[1] or handles[-1]
