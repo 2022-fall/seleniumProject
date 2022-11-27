@@ -20,6 +20,23 @@ try:
     print("Starting test with various locator to use in find_element() method.")
     driver.get(HOST)
     # time.sleep(5)
+    # enter first_name = 'john', enter last_name='doe', enter email='jdoe@email.com'
+    # select radio button Gender=Male
+    # modile_number = 9876543210
+    # enter date_of_birth = 27 Nov 2000
+    # enter subjects = 'selenium forms testing'
+    # select checkboxes, select Sports, Reading
+    # (optional) upload picture
+    # enter message in text_area = '2906 Shell Road, 12224'
+    # check is City list is enabled.
+    # select state=NCR
+    # check is City list is enabled.
+    # select city=Delhi
+    # check if Male gender is selected
+    # check if Sports Hobbies is selected
+    # click submit
+    # verify the message='Thanks for submitting the form'
+
 
 except Exception as err:
     print("Python Exception: test failed with following exception.")
