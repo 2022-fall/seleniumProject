@@ -10,10 +10,13 @@ HOST = "https://demoqa.com/automation-practice-form"
 # created the object for chromedriver that talks to Chrome Browser
 chr_options = Options()
 chr_options.add_experimental_option("detach", True)
+chr_options.add_experimental_option("disable-popup-blocking", True)
 driver = webdriver.Chrome(options=chr_options)
 print('maximizing the browser window')
-driver.maximize_window()
+# driver.maximize_window()
 # This sets a sticky timeout to implicitly wait for an element to be found, or a command to complete.
+driver.implicitly_wait(20)
+
 try:
     # Input DATA:
     first_name = 'john'
@@ -27,8 +30,8 @@ try:
     gender_male_xpath = '//input[@id="gender-radio-1"]/..'
     mobile_number_input = 'userNumber'
     date_of_birth_input = 'dateOfBirthInput'
-    hobbies_sp = 'hobbies-checkbox-1'
-    hobbies_reading = 'hobbies-checkbox-2'
+    hobbies_sp_xpath = '//input[@id="hobbies-checkbox-1"]/..'
+    hobbies_reading_xpath = '//input[@id="hobbies-checkbox-2"]/..'
     upload_pic_input = 'uploadPicture'
     address_textarea = 'currentAddress'
     state_list = 'state'
@@ -42,6 +45,8 @@ try:
     # Steps:
     print("Starting test with various locator to use in find_element() method.")
     driver.get(HOST)
+    # driver.execute_script("document.body.style.zoom='0.9'")
+
     # time.sleep(5)
     # enter first name , last name and email
     driver.find_element(By.ID, fn_input).send_keys(first_name)
@@ -54,40 +59,47 @@ try:
     # (optional) enter date_of_birth = '27 Nov 2000'
     # (optional) enter subjects = 'selenium forms testing'
     # select checkboxes, select Sports, Reading
-    driver.find_element(By.ID, hobbies_sp).click()
-    driver.find_element(By.ID, hobbies_reading).click()
+    driver.find_element(By.XPATH, hobbies_sp_xpath).click()
+    driver.find_element(By.XPATH, hobbies_reading_xpath).click()
     # (optional) upload picture
     # enter message in text_area = '2906 Shell Road, 12224'
     driver.find_element(By.ID, address_textarea).send_keys('2906 Shell Road, 12224')
     # check is City list is enabled.
-    print('is City list is enabled before selecting state?', driver.find_element(By.ID, city_list).is_enabled())
+    print('is City list is enabled before selecting state?', driver.find_element(By.ID, city_list).is_selected())
     # select state=NCR
-    print('is State list is enabled before selecting state?', driver.find_element(By.ID, state_list).is_enabled())
-    driver.find_element(By.ID, state_input).send_keys('NCR')
+    print('is State list is enabled before selecting state?', driver.find_element(By.ID, state_list).is_selected())
+    driver.find_element(By.ID, state_input).send_keys('NCR' + Keys.TAB)
+    print("state is entered.")
     # check is City list is enabled.
+    time.sleep(2)
     print('is City list enabled after selecting state?', driver.find_element(By.ID, city_list).is_enabled())
     # select city=Delhi
-    driver.find_element(By.ID, city_input).send_keys('Delhi')
+    driver.find_element(By.ID, city_input).send_keys('Delhi' + Keys.TAB)
+    print('city is entered.')
     # check if Male gender is selected
-    print('is Male gender radio button selected?', driver.find_element(By.ID, gender_male_xpath).is_selected())
+    print('is Male gender radio button selected?', driver.find_element(By.XPATH, gender_male_xpath).is_enabled())
     # check if Sports Hobbies is selected
-    print('is Sports selected from Hobbies?', driver.find_element(By.ID, hobbies_sp).is_selected())
+    print('is Sports selected from Hobbies?', driver.find_element(By.XPATH, hobbies_sp_xpath).is_selected())
     # click submit
     driver.find_element(By.ID, submit_button).click()
     # verify the message='Thanks for submitting the form'
     print("Is Confirmation message displayed?", driver.find_element(By.ID, confirmation_msg).is_displayed())
     # close the confirmation window
-    driver.find_element(By.ID, close_cm_button).click()
+    close_btn = driver.find_element(By.ID, close_cm_button)
+    driver.execute_script("arguments[0].scrollIntoView();", close_btn)
+    close_btn.click()
     time.sleep(10)
 
 except Exception as err:
+    time.sleep(10)
     print("Python Exception: test failed with following exception.")
     print(err)
 except (NoSuchElementException, TimeoutException) as err:
+    time.sleep(10)
     print("Selenium Exception: test failed with following exception.")
     print(err)
 finally:
     # close all tabs:
     driver.quit()
+    print("TEST Completed!!")
     # pass
-driver.implicitly_wait(20)
