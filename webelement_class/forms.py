@@ -10,12 +10,30 @@ HOST = "https://demoqa.com/automation-practice-form"
 # created the object for chromedriver that talks to Chrome Browser
 chr_options = Options()
 chr_options.add_experimental_option("detach", True)
-chr_options.add_experimental_option("disable-popup-blocking", True)
+# chr_options.add_experimental_option('excludeSwitches',["disable-popup-blocking"])
 driver = webdriver.Chrome(options=chr_options)
 print('maximizing the browser window')
-# driver.maximize_window()
+driver.maximize_window()
 # This sets a sticky timeout to implicitly wait for an element to be found, or a command to complete.
 driver.implicitly_wait(20)
+time.sleep(0)
+
+
+def disable_google_ads(iframe_xpath):
+    all_iframes = driver.find_elements(By.XPATH, iframe_xpath)
+    if len(all_iframes) > 0:
+        print("Ad Found\n")
+        driver.execute_script("""
+            var elems = document.getElementsByTagName("iframe"); 
+            for(var i = 0, max = elems.length; i < max; i++)
+                 {
+                     elems[i].hidden=true;
+                 }
+                              """)
+        print('Total Ads: ' + str(len(all_iframes)))
+    else:
+        print('No frames found')
+
 
 try:
     # Input DATA:
@@ -41,13 +59,18 @@ try:
     submit_button = 'submit'
     confirmation_msg = 'example-modal-sizes-title-lg'
     close_cm_button = 'closeLargeModal'
+    google_ads_iframe_xpath = "//iframe[contains(@id, 'google_ads_iframe_')]"
 
     # Steps:
-    print("Starting test with various locator to use in find_element() method.")
     driver.get(HOST)
+    # let all ads load
+    time.sleep(5)
+    # after loading all ads this step will go through all of them and disable
+    disable_google_ads(google_ads_iframe_xpath)
+
+    print("Starting test with various properties and methods for WebElement class.")
     # driver.execute_script("document.body.style.zoom='0.9'")
 
-    # time.sleep(5)
     # enter first name , last name and email
     driver.find_element(By.ID, fn_input).send_keys(first_name)
     driver.find_element(By.ID, ln_input).send_keys(last_name)
@@ -81,14 +104,21 @@ try:
     # check if Sports Hobbies is selected
     print('is Sports selected from Hobbies?', driver.find_element(By.XPATH, hobbies_sp_xpath).is_selected())
     # click submit
-    driver.find_element(By.ID, submit_button).click()
+    submit_button = driver.find_element(By.ID, submit_button)
+    # below step is optional, it is to scroll to the element, but we dont have scroll bar on the website, it wont work
+    # but this is good case to show that we can execute javascript with Selenium commands
+    driver.execute_script("arguments[0].scrollIntoView();", submit_button)
+    submit_button.click()
+    time.sleep(5)
+    print("all information was entered and submitted...")
+
     # verify the message='Thanks for submitting the form'
     print("Is Confirmation message displayed?", driver.find_element(By.ID, confirmation_msg).is_displayed())
     # close the confirmation window
     close_btn = driver.find_element(By.ID, close_cm_button)
-    driver.execute_script("arguments[0].scrollIntoView();", close_btn)
     close_btn.click()
-    time.sleep(10)
+    time.sleep(2)
+    print("Test Successfully executed.")
 
 except Exception as err:
     time.sleep(10)
@@ -102,4 +132,3 @@ finally:
     # close all tabs:
     driver.quit()
     print("TEST Completed!!")
-    # pass
