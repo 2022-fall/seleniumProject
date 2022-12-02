@@ -388,13 +388,14 @@ element.text   # property - you must not use parenthesis
 ## 12/01/2022 Agenda of recent and future classes
 
 - 11/27 - WebElement: forms, jscript execute, xpath
-- 12/1 - Q&A - overall 
+- 12/1 - Q&A - overall - 
 - 12/3 - selenium WebElement: drop down, alerts, explicit waits
 - 12/4 - Selenium advanced: mouse movements, screenshots, logs
 - 12/8 - Unit Testing Framework: Pytest
 - 12/10-12/11 - Automation Testing Framework: Pytest, page object modeling
 
-
+- Java - backend language (python, C#, ...)
+- javascript - UI/front end language (executed on the browser)
 
 Assertion: 
 - from python to verify something
