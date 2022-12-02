@@ -108,7 +108,8 @@ try:
     # below step is optional, it is to scroll to the element, but we dont have scroll bar on the website, it wont work
     # but this is good case to show that we can execute javascript with Selenium commands
     driver.execute_script("arguments[0].scrollIntoView();", submit_button)
-    submit_button.click()
+    driver.execute_script("arguments[0].click();", submit_button)
+    # submit_button.click()
     time.sleep(5)
     print("all information was entered and submitted...")
 
