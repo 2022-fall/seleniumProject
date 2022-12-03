@@ -72,7 +72,12 @@ try:
     # driver.execute_script("document.body.style.zoom='0.9'")
 
     # enter first name , last name and email
-    driver.find_element(By.ID, fn_input).send_keys(first_name)
+    fn_box = driver.find_element(By.ID, fn_input)
+    fn_box.send_keys('Delete me Please')
+    time.sleep(5)
+    fn_box.clear()
+    fn_box.send_keys(first_name)
+    time.sleep(5)
     driver.find_element(By.ID, ln_input).send_keys(last_name)
     driver.find_element(By.ID, email_input).send_keys(email)
     # mobile_number = 9876543210

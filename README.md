@@ -466,6 +466,45 @@ Xpath="//tagname[@attribute='value']"
 msg_xpah = "//input[@name = 'input-message']"
 
 ```
+### WebElement class : Forms
+
+
+### WebElement class : get_attribute
+html  document: 
+```html
+...
+<input type="text" id="firstname" name="firstname" value=""
+title="First Name" maxlength="255" class="input-text
+required-entry">
+...
+
+```
+
+python selenium code: 
+```python
+...
+firstname_elem = driver.find_element(By.ID, fn_input)
+print(firstname_elem.get_attribute('maxlength')) -> 255
+print(firstname_elem.get_attribute('name')) -> 'firstname'
+print(firstname_elem.get_attribute('class')) -> "input-text required-entry"
+firstname_elem.send_keys(Keys.ENTER)
+print(firstname_elem.get_attribute('class')) -> "input-text required-entry"
+...
+```
+
+### WebElement class : drop down list
+
+```html
+...
+<select id="select-language" title="Your Language" onchange="window.location.href=this.value">
+    <option value="http://demo.magentocommerce.com/?___store=default&amp;___from_store=default" selected="selected">English</option>
+    <option value="http://demo.magentocommerce.com/?___store=french&amp;___from_store=default">French</option>
+    <option value="http://demo.magentocommerce.com/?___store=german&amp;___from_store=default">German</option>
+</select>
+...
+```
+
+
 
 ---------------
 
