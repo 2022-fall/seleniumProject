@@ -509,7 +509,7 @@ print(firstname_elem.get_attribute('class')) -> "input-text required-entry"
 ```python
 ...
 # switch to the alert
-alert = driver.switch_to.Alert()
+alert = driver.switch_to.alert()
 # get the text from alert
 alert_text = alert.text
 alert.accept() # click OK button on alert box

@@ -33,10 +33,49 @@ try:
     # Steps:
     driver.get(HOST)
     time.sleep(5)
-    # click alert 1 button, click ok button to close the alert
-    # click alert 2 button, confirm the alert, verify Ok button is clicked in the result test
-    # click alert 2 button, dismiss the alert, verify Cancel button is clicked in the result text
-    # click alert 3 button, enter the alert_input, confirm the alert,  verify alert_input message in result text
+    print("# click alert 1 button, click ok button to close the alert")
+    driver.find_element(By.ID, alert_notify).click()
+    alert = driver.switch_to.alert
+    time.sleep(2)
+    print(f"Text on the alert: '{alert.text}'")
+    alert.accept()
+    print(".......................................")
+    time.sleep(5)
+
+    print("# click alert 2 button, confirm the alert, verify Ok button is clicked in the result test")
+    driver.find_element(By.ID, alert_confirm).click()
+    alert = driver.switch_to.alert
+    time.sleep(2)
+    print(f"Text on the alert: '{alert.text}'")
+    alert.accept()
+    result_msg = driver.find_element(By.ID, confirm_result).text
+    print(f"Result message : '{result_msg}'")
+    print(".......................................")
+    time.sleep(5)
+
+    print("# click alert 2 button, dismiss the alert, verify Cancel button is clicked in the result text")
+    driver.find_element(By.ID, alert_confirm).click()
+    alert = driver.switch_to.alert
+    time.sleep(2)
+    print(f"Text on the alert: '{alert.text}'")
+    alert.dismiss()
+    result_msg = driver.find_element(By.ID, confirm_result).text
+    print(f"Result message : '{result_msg}'")
+    print(".......................................")
+    time.sleep(5)
+
+    print("# click alert 3 button, enter the alert_input, confirm the alert,  verify alert_input message in result text")
+    driver.find_element(By.ID, alert_prompt).click()
+    alert = driver.switch_to.alert
+    time.sleep(2)
+    print(f"Text on the alert: '{alert.text}'")
+    alert.send_keys(alert_input)
+    alert.accept()
+    result_msg = driver.find_element(By.ID, prompt_result).text
+    print(f"Result message : '{result_msg}'")
+    print(".......................................")
+    time.sleep(5)
+
     # click alert 3 button, enter the alert_input, dismiss the alert,  verify no result message
 
     time.sleep(2)
