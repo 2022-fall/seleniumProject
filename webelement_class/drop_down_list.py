@@ -5,6 +5,8 @@ from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import *
 import time
 
+from selenium.webdriver.support.select import Select
+
 HOST = "https://www.globalsqa.com/demo-site/select-dropdown-menu/"
 
 # created the object for chromedriver that talks to Chrome Browser
@@ -27,9 +29,29 @@ try:
 
     # Steps:
     driver.get(HOST)
-    # let all ads load
     time.sleep(5)
 
+    drop_down_elem = driver.find_element(By.TAG_NAME, country_dd_tag)
+    country_selection = Select(drop_down_elem)
+
+    print("# check first selected option")
+    print('First Selected option: ', country_selection.first_selected_option.text)
+
+    print("Selecting by index: 2 ... ")
+    country_selection.select_by_index(2)
+    print("Selected country: ", country_selection.all_selected_options[0].text)
+
+    print("Selecting by value (attribute): 'FRA' ...")
+    country_selection.select_by_value('FRA')
+    print("Selected country: ", country_selection.all_selected_options[0].text)
+
+    print("# select 'United States' from the drop-down list")
+    country_selection.select_by_visible_text('United States')
+    print("# verify 'United States' is selected : get all selected options")
+    print("Selected country: ", country_selection.all_selected_options[0].text)
+
+    time.sleep(2)
+    print("Drop Down Test Successfully executed.")
 
 except Exception as err:
     time.sleep(10)
