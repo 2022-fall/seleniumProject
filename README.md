@@ -289,9 +289,24 @@ Example of Locating the element uniquely
 1. xpath 
 ```python
 msg_xpath = '//form/div/input[@id="user-message" and @class="form-control"]'
+# Building xpath 
+# //tag[@att='value']
+# //tag[text()='value']
+
+# option1: 
+text_xpath = "//span[@class='mr-3' and @name='text1']"
+
+# Using text of the element to build the xpath: 
+# option2: 
+text1_xpath = "//span[text()='Click Button to see alert ']"
+# option3: 
+text1_xpath = "//span[contains(text(), 'Click Button to')]"
+
+# 12/03/2022 HW reading: https://www.guru99.com/xpath-selenium.html
 ```
 This is the xpath for the below element.
 ```html
+<span class="mr-3" name="text1">Click Button to see alert </span>
 <input type="text" class="form-control" name="input-message" placeholder="Please enter your Message" id="user-message">
 Some text here
 </input>
@@ -388,7 +403,7 @@ element.text   # property - you must not use parenthesis
 ## 12/01/2022 Agenda of recent and future classes
 
 - 11/27 - WebElement: forms, jscript execute, xpath
-- 12/1 - Q&A - overall - 
+- 12/1 - Q&A - overall - Technical Interview Questions
 - 12/3 - selenium WebElement: drop down, alerts, explicit waits
 - 12/4 - Selenium advanced: mouse movements, screenshots, logs
 - 12/8 - Unit Testing Framework: Pytest
@@ -538,7 +553,6 @@ Videos to watch:
 - [Bdd Framework Overview](https://drive.google.com/drive/folders/1dTlgpj4hBUGba-W-eyLr5JRTeBAVlJB-?usp=sharing)
 - [CI/CD pipelines and working with Jenkins and AWS](https://drive.google.com/drive/folders/1GEP_Bw_mQVpc2RDdZS3AIUk_UygyzwPA?usp=sharing)
 - [All Mock interviews to watch](https://drive.google.com/drive/folders/1oxyinen_o7BWBTrUSNzhhcvsrVXbUpI3?usp=sharing)
-
 
 ----- 
 **Automation practice websites:**
