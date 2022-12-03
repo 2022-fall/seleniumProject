@@ -286,7 +286,7 @@ driver.find_elements(By.PARTIAL_LINK_TEXT, 'Add to')
 Demo website: https://www.seleniumeasy.com/test/basic-first-form-demo.html
 
 Example of Locating the element uniquely
-1. xpath 
+### 1. xpath 
 ```python
 msg_xpath = '//form/div/input[@id="user-message" and @class="form-control"]'
 # Building xpath 
@@ -310,9 +310,54 @@ This is the xpath for the below element.
 <input type="text" class="form-control" name="input-message" placeholder="Please enter your Message" id="user-message">
 Some text here
 </input>
+<div class="col">
+	<button id="alertButton" type="button" class="btn btn-primary">Click me</button>
+</div>
 ```
 
-  
+### 2. CSS Selector: 
+Syntax for Locating by CSS Selector Usage
+
+
+||Method	|| Target Syntax ||	Example ||
+|Tag and ID |	css=tag#id	| css=input#email |
+|Tag and Class	| css=tag.class	| css=input.inputtext |
+|Tag and Attribute|	css=tag[attribute=value] |	css=inp ut[name=lastName] |
+|Tag, Class, and Attribute|	css=tag.class[attribute=value] | css=input.inputtext[tabindex=1] |
+
+[Find out more about CSS Selector here](https://www.guru99.com/locators-in-selenium-ide.html)
+
+
+** Converting Xpath to CSS selector ** 
+HTML document elements you want to locate: 
+```html
+<span class="mr-3" name="text1">Click Button to see alert </span>
+<input type="text" class="form-control" name="input-message" placeholder="Please enter your Message" id="user-message">
+Some text here
+</input>
+<div class="col">
+	<button id="alertButton" type="button" class="btn btn-primary">Click me</button>
+</div>
+```
+
+CSS selectors to build based on above html elements:
+
+```python
+"//span[text()='Click Button to see alert ']"
+text_css_selector = "span:contains('Click Button to see alert ')"
+
+text_xpath = "//span[@class='mr-3'" 
+text_css_selector = "span.mr-3"
+
+alert_xpath = "//span[@id='alert1']" 
+alert_css_selector = "span#alert1"
+
+alert_id = 'alertButton'
+alert_xpath = "//button[@id='alertButton' and @type='button']"
+alert_css_selector = 'button#alertButton'
+alert_css_selector = 'button.btn-primary'
+```
+
   **Tags to know:**
 ```html
 links, images, forms (textbox, radio, checkbox, submit, fileupload, <input>, <label>, <select>, <textarea>, <button>)
