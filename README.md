@@ -504,7 +504,19 @@ print(firstname_elem.get_attribute('class')) -> "input-text required-entry"
 ...
 ```
 
+### WebElement class : Alerts
 
+```python
+...
+# switch to the alert
+alert = driver.switch_to.Alert()
+# get the text from alert
+alert_text = alert.text
+alert.accept() # click OK button on alert box
+alert.dismiss() # click Cancel button on alert box
+alert.send_keys() # enter a text on the alert box
+...
+```
 
 ---------------
 
