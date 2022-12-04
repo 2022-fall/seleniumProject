@@ -5,6 +5,8 @@ from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import *
 import time
 
+from utilities import *
+
 HOST = "https://demoqa.com/automation-practice-form"
 
 # created the object for chromedriver that talks to Chrome Browser
@@ -17,22 +19,6 @@ driver.maximize_window()
 # This sets a sticky timeout to implicitly wait for an element to be found, or a command to complete.
 driver.implicitly_wait(20)
 time.sleep(0)
-
-
-def disable_google_ads(iframe_xpath):
-    all_iframes = driver.find_elements(By.XPATH, iframe_xpath)
-    if len(all_iframes) > 0:
-        print("Ad Found\n")
-        driver.execute_script("""
-            var elems = document.getElementsByTagName("iframe"); 
-            for(var i = 0, max = elems.length; i < max; i++)
-                 {
-                     elems[i].hidden=true;
-                 }
-                              """)
-        print('Total Ads: ' + str(len(all_iframes)))
-    else:
-        print('No frames found')
 
 
 try:
@@ -59,14 +45,13 @@ try:
     submit_button = 'submit'
     confirmation_msg = 'example-modal-sizes-title-lg'
     close_cm_button = 'closeLargeModal'
-    google_ads_iframe_xpath = "//iframe[contains(@id, 'google_ads_iframe_')]"
 
     # Steps:
     driver.get(HOST)
     # let all ads load
     time.sleep(5)
     # after loading all ads this step will go through all of them and disable
-    disable_google_ads(google_ads_iframe_xpath)
+    disable_google_ads(driver)
 
     print("Starting test with various properties and methods for WebElement class.")
     # driver.execute_script("document.body.style.zoom='0.9'")

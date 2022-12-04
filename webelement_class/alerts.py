@@ -1,10 +1,10 @@
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.chrome.options import Options
-from selenium.common.exceptions import *
 import time
 
+from selenium import webdriver
+from selenium.common.exceptions import *
+from selenium.webdriver.chrome.options import Options
+
+from utilities import *
 
 HOST = "https://demoqa.com/alerts"
 
@@ -33,6 +33,7 @@ try:
     # Steps:
     driver.get(HOST)
     time.sleep(5)
+    disable_google_ads(driver)
     print("# click alert 1 button, click ok button to close the alert")
     driver.find_element(By.ID, alert_notify).click()
     alert = driver.switch_to.alert

@@ -493,7 +493,7 @@ print(firstname_elem.get_attribute('class')) -> "input-text required-entry"
 ```
 
 ### WebElement class : drop down list
-
+Using Select class to handle drop down list element that is with 'select' tag and 'option' child elements
 ```html
 ...
 <select id="select-language" title="Your Language" onchange="window.location.href=this.value">
@@ -503,6 +503,21 @@ print(firstname_elem.get_attribute('class')) -> "input-text required-entry"
 </select>
 ...
 ```
+Python Selenium code for above element: 
+```python
+from selenium.webdriver.support.select import Select
+
+drop_down_elem = driver.find_element(By.TAG_NAME, country_dd_tag)
+country_selection = Select(drop_down_elem)
+print('First Selected option: ', country_selection.first_selected_option.text)
+country_selection.select_by_index(2)
+print("Selected country: ", country_selection.all_selected_options[0].text)
+country_selection.select_by_value('FRA')
+country_selection.select_by_visible_text('United States')
+
+
+```
+
 
 ### WebElement class : Alerts
 
@@ -532,6 +547,40 @@ Synchronization methods: explicit wait : WebDriverWait class, expected_condition
 WebDriver provides the WebDriverWait and
 expected_conditions classes to implement an explicit wait.
   [practice website](https://chercher.tech/practice/explicit-wait-sample-selenium-webdriver)
+### Using implicit wait
+The implicit wait offers a generic way to synchronize the entire test or group of steps in WebDriver. Implicit wait is useful in dealing with situations where the
+application's response time is inconsistent due to network speed or applications that use dynamically rendered elements with Ajax calls.
+
+When we set an implicit wait on WebDriver, it polls or searches the DOM for a certain amount of time to find an element or elements if they are not immediately available. By default, the implicit wait timeout is set to 0.
+
+Once set, the implicit wait is set for the life of the WebDriver instance or for the entire duration of the test, and the WebDriver applies this implicit wait for all the 
+steps that find the elements on the page unless we set it back to 0. The webdriver class provides the implicitly_wait() method to configure timeout.
+
+### Using explicit wait
+The explicit wait is another wait mechanism available in WebDriver to synchronize tests. Explicit wait provides a better control when compared to implicit wait. Unlike
+an implicit wait, we can use a set of predefined or custom conditions for the script to wait for before proceeding with further steps.
+
+An explicit wait can only be implemented in specific cases where script synchronization is needed. WebDriver provides the WebDriverWait and
+expected_conditions classes to implement an explicit wait. The expected_conditions class provides a set of predefined conditions to wait for before proceeding further in the code.
+
+```python
+from selenium import webdriver
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions
+
+driver = webdriver.Chrome()
+driver.implicitly_wait(20)
+
+# wait for the alert to present
+alert = WebDriverWait(driver, 10).until(expected_conditions.alert_is_present())
+# wait for Clear All link to be visible
+clear_all_link = WebDriverWait(driver, 10).until(expected_conditions.visibility_of_element_located((By.LINK_TEXT, "Clear All")))
+
+
+```
+You can see more examples of the conditions from expected_conditions class on page 94 of the [book](data/Learning_Selenium.pdf).
+
 
 ## 5. Chapter 9. Advanced Techniques of Selenium WebDriver 
 
