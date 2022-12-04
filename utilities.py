@@ -17,4 +17,3 @@ def disable_google_ads(driver):
         print('Total Ads: ' + str(len(all_iframes)))
     else:
         print('No frames found')
-

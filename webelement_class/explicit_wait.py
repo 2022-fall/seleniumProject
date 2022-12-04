@@ -3,7 +3,9 @@ import time
 from selenium import webdriver
 from selenium.common.exceptions import *
 from selenium.webdriver.chrome.options import Options
-
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions
 from utilities import *
 
 HOST = "https://chercher.tech/practice/explicit-wait-sample-selenium-webdriver"
@@ -37,7 +39,15 @@ try:
     disable_google_ads(driver)
 
     # code for explicit waits will be here
+    print("# 1. click alert button, explicitly wait until alert appears (condition)")
+    print("# click ok on alert to close")
+    alert = driver.switch_to.alert
+    alert.accept()
 
+    print("# 2. click on ChangeText.. button, wait until text changes, get text and print")
+    print("# 3. click on 'Display button ...' button, wait until hidden button is displayed, verify button is enabled")
+    print("# 4. Click on 'Enable button after..' button, wait until 'Button' is enabled, click enabled Button")
+    print("# 5. click 'Check Checkbox ...' button, wait until Checkbox is checked, verify 'Checkbox' is checked.")
     time.sleep(2)
     print("Explicit wait Test Successfully executed.")
 
