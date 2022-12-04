@@ -450,7 +450,8 @@ element.text   # property - you must not use parenthesis
 - 11/27 - WebElement: forms, jscript execute, xpath
 - 12/1 - Q&A - overall - Technical Interview Questions
 - 12/3 - selenium WebElement: locators(xpath, css selector), drop down, alerts
-- 12/4 - Selenium advanced: explicit waits, mouse movements, screenshots, logs
+- 12/4 - Selenium advanced: explicit waits
+- 12/8 - Selenium advanced: mouse movements, screenshots, logs
 - 12/8 - Unit Testing Framework: Pytest
 - 12/10-12/11 - Automation Testing Framework: Pytest, page object modeling
 
