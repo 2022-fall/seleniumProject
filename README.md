@@ -567,17 +567,21 @@ expected_conditions classes to implement an explicit wait. The expected_conditio
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support import expected_conditions as EC
 
 driver = webdriver.Chrome()
 driver.implicitly_wait(20)
 
 # wait for the alert to present
-alert = WebDriverWait(driver, 10).until(expected_conditions.alert_is_present())
+# alert = WebDriverWait(driver, 10).until(expected_conditions.alert_is_present())
+alert = WebDriverWait(driver, 10).until(EC.alert_is_present())
 # wait for Clear All link to be visible
-clear_all_link = WebDriverWait(driver, 10).until(expected_conditions.visibility_of_element_located((By.LINK_TEXT, "Clear All")))
-
-
+clear_all_link = WebDriverWait(driver, 7).until(EC.visibility_of_element_located((By.LINK_TEXT, "Clear All")))
+wdwait = WebDriverWait(driver, 15)
+wdwait.until(EC.text_to_be_present_in_element((By.ID, target_text_id), 'Selenium'))
+wdwait.until(EC.visibility_of_element_located((By.ID, hidden_button_id)))
+wdwait.until(EC.element_to_be_clickable((By.ID, disabled_button_id)))
+wdwait.until(EC.element_to_be_selected(driver.find_element(By.ID, checkbox_id)))
 ```
 You can see more examples of the conditions from expected_conditions class on page 94 of the [book](data/Learning_Selenium.pdf).
 
