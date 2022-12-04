@@ -5,7 +5,7 @@ from selenium.common.exceptions import *
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support import expected_conditions as EC
 from utilities import *
 
 HOST = "https://chercher.tech/practice/explicit-wait-sample-selenium-webdriver"
@@ -35,20 +35,31 @@ try:
 
     # Steps:
     driver.get(HOST)
-    time.sleep(5)
-    disable_google_ads(driver)
+    time.sleep(1)
+    # disable_google_ads(driver)
 
     # code for explicit waits will be here
     print("# 1. click alert button, explicitly wait until alert appears (condition)")
     print("# click ok on alert to close")
+    driver.find_element(By.ID, alert_button_id).click()
+    wdwait = WebDriverWait(driver, 7)
+    wdwait.until(EC.alert_is_present())
     alert = driver.switch_to.alert
+    time.sleep(5)
     alert.accept()
 
-    print("# 2. click on ChangeText.. button, wait until text changes, get text and print")
+    print("# 2. get current text, click on ChangeText.. button, wait until text changes, get new text displayed")
+    print('Text Displayed, before:', driver.find_element(By.ID, target_text_id).text)
+    driver.find_element(By.ID, populate_text_id).click()
+    wdwait = WebDriverWait(driver, 15)
+    wdwait.until(EC.text_to_be_present_in_element((By.ID, target_text_id), 'Selenium'))
+    print('Text Displayed, after:', driver.find_element(By.ID, target_text_id).text)
+
+
     print("# 3. click on 'Display button ...' button, wait until hidden button is displayed, verify button is enabled")
     print("# 4. Click on 'Enable button after..' button, wait until 'Button' is enabled, click enabled Button")
     print("# 5. click 'Check Checkbox ...' button, wait until Checkbox is checked, verify 'Checkbox' is checked.")
-    time.sleep(2)
+    time.sleep(5)
     print("Explicit wait Test Successfully executed.")
 
 except Exception as err:
