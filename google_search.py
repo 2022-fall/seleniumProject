@@ -13,6 +13,7 @@ driver.get("https://www.google.com/")
 time.sleep(0)
 
 search_box = driver.find_element(By.NAME, "q")
+# search_box.send_keys("selenium"+Keys.RETURN)
 search_box.send_keys("selenium")
 search_box.send_keys(Keys.ENTER)
 time.sleep(0)
