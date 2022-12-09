@@ -628,7 +628,17 @@ driver.save_screenshot(scrshot_dir+'dragdrop1.png')
 
 ### Logging with Python 
 
+```python
+import logging
 
+def create_logger(file):
+    logging.basicConfig(filename=file,
+                        level=logging.INFO,
+                        format='%(asctime)-15s [%(levelname)s]: %(message)s',
+                        filemode='a')
+    return logging.getLogger()
+
+```
 
 
 ## 6. Chapter 8. Framework in Test Automation
