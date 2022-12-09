@@ -599,6 +599,24 @@ In this chapter, you will learn more about:
 - Capturing screenshots and movies of test runs
 
 
+```python
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.keys import Keys
+
+driver = webdriver.Chrome()
+
+# combination of shift + n  (key_down to press the shift key, then key_up to release that)
+ActionChains(driver).key_down(Keys.SHIFT).send_keys('n').key_up(Keys.SHIFT).perform()
+
+# MOUSE ACTIONS: HOVER OVER ELEMENT
+age_field = driver.find_element(By.ID, "age")
+ActionChains(driver).move_to_element(age_field).perform()
+```
+
 ## 6. Chapter 8. Framework in Test Automation
 The way of engineering your project, put your code in structured way: 
 
