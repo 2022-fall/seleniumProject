@@ -1,4 +1,8 @@
+import time
+
 from selenium.webdriver.common.by import By
+
+import logging
 
 
 def disable_google_ads(driver):
@@ -17,3 +21,19 @@ def disable_google_ads(driver):
         print('Total Ads: ' + str(len(all_iframes)))
     else:
         print('No frames found')
+
+
+def create_logger(file):
+    logging.basicConfig(filename=file,
+                        level=logging.INFO,
+                        format='%(asctime)-15s [%(levelname)s]: %(message)s',
+                        filemode='a')
+    return logging.getLogger()
+
+
+def get_str_day():
+    return time.strftime("%Y%m%d")
+
+
+def get_str_day_min_sec():
+    return time.strftime("%Y%m%d %H%M%S")

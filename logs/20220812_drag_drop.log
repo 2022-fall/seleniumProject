@@ -1,0 +1,9 @@
+2022-12-08 22:06:07,001 [INFO]: **************** Drag and drop scenario started ********************
+2022-12-08 22:06:08,153 [WARNING]: maximizing the browser window
+2022-12-08 22:06:09,588 [INFO]: # verify drop box text before dropping, expected: 'Drop here'
+2022-12-08 22:06:09,630 [INFO]: text in drop box, before: 'Drop here'
+2022-12-08 22:06:09,717 [INFO]: # drag and drop the object into the box
+2022-12-08 22:06:10,260 [INFO]: # verify drop box text after dropping, expected: 'Dropped!'
+2022-12-08 22:06:10,272 [INFO]: text in drop box, after: 'Dropped!'
+2022-12-08 22:06:15,407 [INFO]: Drag and Drop Test Successfully executed.
+2022-12-08 22:06:17,537 [INFO]: ================= TEST Completed!! =================

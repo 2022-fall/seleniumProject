@@ -616,6 +616,20 @@ ActionChains(driver).key_down(Keys.SHIFT).send_keys('n').key_up(Keys.SHIFT).perf
 age_field = driver.find_element(By.ID, "age")
 ActionChains(driver).move_to_element(age_field).perform()
 ```
+### Taking screenshots with selenium 
+
+```python
+from selenium import webdriver
+
+driver = webdriver.Chrome()
+scrshot_dir = '../screenshots/'
+driver.save_screenshot(scrshot_dir+'dragdrop1.png')
+```
+
+### Logging with Python 
+
+
+
 
 ## 6. Chapter 8. Framework in Test Automation
 The way of engineering your project, put your code in structured way: 
