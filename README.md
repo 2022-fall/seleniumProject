@@ -649,7 +649,19 @@ The way of engineering your project, put your code in structured way:
     - hooks(fixtures)
     this will help you to better manager your execution
     - how to run regression suites
-    
+
+### Reading links:
+
+1. [Getting Started With Pytest and Selenium](https://www.lambdatest.com/blog/selenium-python-pytest-testing-tutorial/)
+2. [Full and Complete information about pytest with examples](https://www.guru99.com/pytest-tutorial.html)
+2. [Pytest documentation](https://docs.pytest.org/en/7.2.x/)
+3. [Optional Reading on Pytest implementation, it is from development point of view](https://realpython.com/pytest-python-testing/)
+4. [Behaviour Driven Framework with Pytest-bdd](https://ultimateqa.com/what-is-bdd-and-how-do-we-practice-it/)
+5. [Detailed BDD Level Up recording](https://drive.google.com/drive/folders/1oxyinen_o7BWBTrUSNzhhcvsrVXbUpI3?usp=sharing)    
+    Please Send request to parent folder in order to have all Self Study Materials. 
+   [Click here to Send Request for Self Study Materials google driver folder.](https://drive.google.com/drive/folders/1oxyinen_o7BWBTrUSNzhhcvsrVXbUpI3?usp=sharing)
+6. [Please watch this recording that shows how to run Automation scripts with Jenkins and AWS](https://drive.google.com/drive/folders/1GEP_Bw_mQVpc2RDdZS3AIUk_UygyzwPA?usp=sharing)
+
 - Page Object Modeling (designing pattern)
     - handle locators and page functions of each page 
     - this is good when you work with complex project.
