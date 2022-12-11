@@ -1,16 +1,12 @@
-import time
-
 from selenium import webdriver
 from selenium.common.exceptions import *
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
 
-from utilities import *
+from src.utilities import *
 
 HOST = "https://jqueryui.com/resources/demos/droppable/default.html"
-scrshot_dir = '../screenshots/'
+scrshot_dir = '../../../screenshots/'
 # logfile = '../logs/20221208_drag_drop.log'
 logfile = f'../logs/{get_str_day()}_drag_drop.log'
 log = create_logger(logfile)

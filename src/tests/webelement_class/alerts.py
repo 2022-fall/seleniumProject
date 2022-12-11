@@ -1,10 +1,8 @@
-import time
-
 from selenium import webdriver
 from selenium.common.exceptions import *
 from selenium.webdriver.chrome.options import Options
 
-from utilities import *
+from src.utilities import *
 
 HOST = "https://demoqa.com/alerts"
 

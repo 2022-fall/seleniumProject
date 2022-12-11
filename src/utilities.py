@@ -40,11 +40,13 @@ def get_str_day_min_sec():
     return time.strftime("%Y%m%d %H%M%S")
 
 
-ROOT_DIR = dirname(abspath(__file__))  # C:\dev\seleniumProject\
+ROOT_DIR = dirname(dirname(abspath(__file__)))  # after refactoring : C:\dev\seleniumProject\src
+# before refactring when utilitis were under main folder: dirname(abspath(__file__)) -> C:\dev\seleniumProject\
 
 
 # __file__ -> utilities.py
 # abspath(__file__) -> C:\dev\seleniumProject\utilities.py
+# after refactoring # abspath(__file__) -> C:\dev\seleniumProject\src\utilities.py
 
 def load_yaml_file(filepath):
     try:
