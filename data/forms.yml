@@ -1,0 +1,5 @@
+case1:
+  host: 'https://demoqa.com/automation-practice-form'
+  first_name: 'john'
+  last_name: 'doe'
+  email: 'jdoe@email.com'

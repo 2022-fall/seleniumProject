@@ -4,15 +4,23 @@ from selenium.common.exceptions import *
 
 from src.utilities import *
 
-HOST = "https://demoqa.com/automation-practice-form"
+filepath1 = ROOT_DIR + '/data/forms.yml'
+data = load_yaml_file(filepath1)
+
 
 @pytest.mark.forms1
 def test_forms_case1(driver):
     try:
         # Input DATA:
-        first_name = 'john'
-        last_name = 'doe'
-        email = 'jdoe@email.com'
+        # first_name = 'john'
+        # last_name = 'doe'
+        # email = 'jdoe@email.com'
+        # HOST = "https://demoqa.com/automation-practice-form"
+
+        first_name = data['case1']['first_name']
+        last_name = data['case1']['last_name']
+        email = data['case1']['email']
+        HOST = data['case1']['host']
 
         # All Locators (all values are ID locators):
         fn_input = 'firstName'
