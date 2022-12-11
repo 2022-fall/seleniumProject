@@ -45,8 +45,14 @@ class BasePage:
         """Geneal function to click on any element found by id."""
         try:
             log.info("clicking the text by id ..")
+
             # element = self.driver.find_element(By.ID, id)
             element = self.wdwait.until(EC.element_to_be_clickable((By.ID, id)))
+
+            # below step is optional, it is to scroll to the element, but we dont have scroll bar on the website, it wont work
+            # but this is good case to show that we can execute javascript with Selenium commands
+            self.driver.execute_script("arguments[0].scrollIntoView();", element)
+            # self.driver.execute_script("arguments[0].click();", element)
             element.click()
             log.info(f"element is clicked.", id)
         except (NoSuchElementException, TimeoutException) as err:
